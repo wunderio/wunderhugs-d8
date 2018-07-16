@@ -1,0 +1,22 @@
+# Hug routing definition
+hug.settings_tab:
+  route_name: hug.settings
+  title: 'Settings'
+  base_route: hug.settings
+
+entity.hug.canonical:
+  route_name: entity.hug.canonical
+  base_route: entity.hug.canonical
+  title: 'View'
+
+entity.hug.edit_form:
+  route_name: entity.hug.edit_form
+  base_route: entity.hug.canonical
+  title: 'Edit'
+
+entity.hug.delete_form:
+  route_name:  entity.hug.delete_form
+  base_route:  entity.hug.canonical
+  title: Delete
+  weight: 10
+

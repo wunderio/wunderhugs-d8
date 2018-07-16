@@ -1,0 +1,10 @@
+
+wunderhugs.wunderhugs_config_form:
+  path: '/admin/config/hugs'
+  defaults:
+    _form: '\Drupal\wunderhugs\Form\WunderhugsConfigForm'
+    _title: 'WunderhugsConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

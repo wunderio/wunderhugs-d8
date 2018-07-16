@@ -1,0 +1,20 @@
+
+# Hug menu items definition
+entity.hug.collection:
+  title: 'Hug list'
+  route_name: entity.hug.collection
+  description: 'List Hug entities'
+  parent: system.admin_structure
+  weight: 100
+
+hug.admin.structure.settings:
+  title: 'Hug settings'
+  description: 'Configure Hug entities'
+  route_name: hug.settings
+  parent: system.admin_structure
+
+wunderhugs.wunderhugs_config_form:
+  title: 'Wunderhug settings'
+  description: 'Control the hug timescale and limits'
+  route_name: wunderhugs.wunderhugs_config_form
+  parent: system.admin_config_system

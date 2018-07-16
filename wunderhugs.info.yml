@@ -1,0 +1,5 @@
+name: 'Wunderhugs'
+type: module
+description: 'Assign and monitor a user reward scheme.'
+core: 8.x
+package: 'Custom'

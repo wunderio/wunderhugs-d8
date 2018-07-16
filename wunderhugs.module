@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains wunderhugs.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wunderhugs_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the wunderhugs module.
+    case 'help.page.wunderhugs':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Assign and monitor a user reward scheme.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

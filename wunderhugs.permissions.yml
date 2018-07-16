@@ -1,0 +1,34 @@
+add hug entities:
+  title: 'Create new Hug entities'
+
+administer hug entities:
+  title: 'Administer Hug entities'
+  description: 'Allow to access the administration form to configure Hug entities.'
+  restrict access: true
+
+edit all hug entities:
+  title: 'Edit all Hug entities'
+
+delete all hug entities:
+  title: 'Delete all Hug entities'
+
+edit own hug entities:
+  title: 'Edit own Hug entities'
+
+delete own hug entities:
+  title: 'Delete own Hug entities'
+
+view all published hug entities:
+  title: 'View all published Hug entities'
+
+view all unpublished hug entities:
+  title: 'View all unpublished Hug entities'
+
+view own published hug entities:
+  title: 'View own published Hug entities'
+
+view own unpublished hug entities:
+  title: 'View own unpublished Hug entities'
+
+view received published hug entities:
+  title: 'View received published Hug entities'
