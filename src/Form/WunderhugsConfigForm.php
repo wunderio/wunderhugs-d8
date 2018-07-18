@@ -35,7 +35,10 @@ class WunderhugsConfigForm extends ConfigFormBase {
       '#type' => 'radios',
       '#title' => $this->t('Hug window'),
       '#description' => $this->t('The length of time a hug window should run for.'),
-      '#options' => ['Weekly' => $this->t('Weekly'), 'Monthly' => $this->t('Monthly')],
+      '#options' => [
+        'Weekly' => $this->t('Weekly'),
+        'Monthly' => $this->t('Monthly'),
+      ],
       '#default_value' => $config->get('hug_window'),
       '#weight' => '0',
     ];
@@ -43,7 +46,15 @@ class WunderhugsConfigForm extends ConfigFormBase {
       '#type' => 'select',
       '#title' => $this->t('Start of the week'),
       '#description' => $this->t('Choose the day you want your weekly window to begin on.'),
-      '#options' => ['Monday' => $this->t('Monday'), 'Tuesday' => $this->t('Tuesday'), 'Wednesday' => $this->t('Wednesday'), 'Thursday' => $this->t('Thursday'), 'Friday' => $this->t('Friday'), 'Saturday' => $this->t('Saturday'), 'Sunday' => $this->t('Sunday')],
+      '#options' => [
+        'Monday' => $this->t('Monday'),
+        'Tuesday' => $this->t('Tuesday'),
+        'Wednesday' => $this->t('Wednesday'),
+        'Thursday' => $this->t('Thursday'),
+        'Friday' => $this->t('Friday'),
+        'Saturday' => $this->t('Saturday'),
+        'Sunday' => $this->t('Sunday'),
+      ],
       '#size' => 1,
       '#default_value' => $config->get('start_of_the_week'),
       '#weight' => '1',

@@ -53,7 +53,10 @@ use Drupal\user\UserInterface;
  *     "delete-form" = "/admin/structure/hug/{hug}/delete",
  *     "collection" = "/admin/structure/hug",
  *   },
- *   field_ui_base_route = "hug.settings"
+ *   field_ui_base_route = "hug.settings",
+ *   constraints = {
+ *     "UserHugLimit" = {},
+ *   }
  * )
  */
 class Hug extends ContentEntityBase implements HugInterface {

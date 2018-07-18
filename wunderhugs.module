@@ -22,3 +22,62 @@ function wunderhugs_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
+
+/**
+ * Fetch the hug window dates based on current config settings.
+ */
+function checkHugWindow($date) {
+  // Fetch the window settings from config.
+  $config = \Drupal::config('wunderhugs.adminsettings');
+  $window_range = $config->get('hug_window');
+  $start_day = $config->get('start_of_the_week');
+  // Work out the start and end dates based on the passed timestamp.
+  $start_time = $end_time = time();
+  if ($window_range == 'Weekly') {
+    if (date('l', $date) == $start_day) {
+      $start_time = strtotime(date('d-m-Y 00:00:00', $date));
+    }
+    else {
+      $start_time = strtotime('last ' . $start_day, $date);
+    }
+    $end_time = strtotime('+7 day', $start_time) - 1;
+  }
+  else if ($window_range == 'Monthly') {
+    $start_time = date('01-m-Y 00:00:00', $date);
+    $end_time = date('d-m-Y 23:59:59', $date);
+  }
+  // Return an array with the start and end dates of the window.
+  return ['start' => $start_time, 'end' => $end_time];
+}
+
+/**
+ * Return the number of hugs, filtered by user and date range.
+ */
+function fetchHugNo($uid = NULL, $start_date = NULL, $end_date = NULL) {
+  if (is_numeric($uid) && empty($start_date) && empty($end_date)) {
+    $hugs = \Drupal::entityQuery('hug')
+      ->condition('user_id', $uid)
+      ->execute();
+    return count($hugs);
+  }
+  else if (is_numeric($uid) && !empty($start_date) && !empty($end_date)) {
+    $hugs = \Drupal::entityQuery('hug')
+      ->condition('user_id', $uid)
+      ->condition('created', $start_date, '>=')
+      ->condition('created', $end_date, '<=')
+      ->execute();
+    return count($hugs);
+  }
+  else if (empty($uid) && !empty($start_date) && !empty($end_date)) {
+    $hugs = \Drupal::entityQuery('hug')
+      ->condition('created', $start_date, '>=')
+      ->condition('created', $end_date, '<=')
+      ->execute();
+    return count($hugs);
+  }
+  else {
+    $hugs = \Drupal::entityQuery('hug')
+      ->execute();
+    return count($hugs);
+  }
+}
