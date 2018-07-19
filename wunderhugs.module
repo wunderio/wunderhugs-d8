@@ -25,6 +25,12 @@ function wunderhugs_help($route_name, RouteMatchInterface $route_match) {
 
 /**
  * Fetch the hug window dates based on current config settings.
+ *
+ * @param int $date
+ *   Timestamp of the date you want to get the window of.
+ *
+ * @return array
+ *   Contains the start and end dates of a hug window.
  */
 function checkHugWindow($date) {
   // Fetch the window settings from config.
@@ -52,6 +58,15 @@ function checkHugWindow($date) {
 
 /**
  * Return the number of hugs, filtered by user and date range.
+ *
+ * @param int $uid
+ *   User's unique ID.
+ * @param int $start_date
+ *   Timestamp to mark the start of when to retrieve the hugs from.
+ * @param int $end_date
+ *   Timestamp to mark the end of when to retrieve the hugs from.
+ * @return int
+ *   The number of hugs retrieved.
  */
 function fetchHugNo($uid = NULL, $start_date = NULL, $end_date = NULL) {
   if (is_numeric($uid) && empty($start_date) && empty($end_date)) {

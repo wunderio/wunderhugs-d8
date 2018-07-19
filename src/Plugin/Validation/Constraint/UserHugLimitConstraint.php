@@ -14,10 +14,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class UserHugLimitConstraint extends Constraint {
 
-  // The message that will be shown if the user is under their limit.
-  public $under_limit = 'You have %value hugs left for this window.';
-
   // The message that will be shown if the user has reached their limit.
-  public $reached_limit = 'You have reached your limit of %value hugs.';
+  public $message = 'You have reached your limit of %value hugs in this window.';
 
 }
