@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.hug.hug.field_hug_description
+    - field.field.hug.hug.field_hug_receiver
+  module:
+    - wunderhugs
+id: hug.hug.default
+targetEntityType: hug
+bundle: hug
+mode: default
+content:
+  field_hug_description:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_hug_receiver:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  name: true
+  user_id: true

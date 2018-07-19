@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.hug.hug.field_hug_description
+    - field.field.hug.hug.field_hug_receiver
+  module:
+    - wunderhugs
+id: hug.hug.default
+targetEntityType: hug
+bundle: hug
+mode: default
+content:
+  field_hug_description:
+    weight: 1
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_hug_receiver:
+    weight: 0
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  name: true
+  user_id: true

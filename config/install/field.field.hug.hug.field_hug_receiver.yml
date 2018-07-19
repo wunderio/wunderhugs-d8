@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.hug.field_hug_receiver
+  module:
+    - wunderhugs
+id: hug.hug.field_hug_receiver
+field_name: field_hug_receiver
+entity_type: hug
+bundle: hug
+label: Receiver
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: hug_receiver_list
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference
