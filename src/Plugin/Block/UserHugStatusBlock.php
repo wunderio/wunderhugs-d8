@@ -22,16 +22,24 @@ class UserHugStatusBlock extends BlockBase {
    */
   public function build() {
     $build = [];
-
-    // Show 'add hug' link.
-    $link = Link::fromTextAndUrl(t('Add hug'), Url::fromRoute('entity.hug.add_form'))->toString();
-    $content = '<p>' . $link . '</p>';
-
-    // Fetch information about this user's current hug window.
+    $content = '';
     $user = \Drupal::currentUser();
+
+    // Fetch the dates for the current hug window.
     $hug_window = checkHugWindow(time());
-    $hug_count = fetchHugNo($user->id(), $hug_window['start'], $hug_window['end']);
-    $content .= \Drupal::translation()->formatPlural($hug_count, '<p>You have sent 1 hug in this window.</p>', '<p>You have sent @count hugs in this window.</p>');
+
+    // Hide some info if user is not logged in.
+    if (isset($user) && $user->id() > 0) {
+      // Show 'add hug' link.
+      $link = Link::fromTextAndUrl(t('Add hug'), Url::fromRoute('entity.hug.add_form'))->toString();
+      $content .= '<p>' . $link . '</p>';
+
+      // Fetch information about this user's current hug window.
+      $hug_count = fetchHugNo($user->id(), $hug_window['start'], $hug_window['end']);
+      $content .= \Drupal::translation()->formatPlural($hug_count, '<p>You have sent 1 hug in this window.</p>', '<p>You have sent @count hugs in this window.</p>');
+    }
+
+    // General hug window information.
     $content .= '<p>' . date('d M', $hug_window['start']) . ' to ' . date('d M', $hug_window['end']) . '</p>';
     $content .= '<p>Total hugs this window: ' . fetchHugNo(NULL, $hug_window['start'], $hug_window['end']) . '</p>';
 

@@ -53,7 +53,15 @@ class HugForm extends ContentEntityForm {
           '%label' => $entity->label(),
         ]));
     }
-    $form_state->setRedirect('entity.hug.canonical', ['hug' => $entity->id()]);
+
+    // Redirect to the profile page if using the block form.
+    $page_user = \Drupal::routeMatch()->getParameter('user');
+    if (isset($page_user)) {
+      $form_state->setRedirect('entity.user.canonical', ['user' => $page_user->id()]);
+    }
+    else {
+      $form_state->setRedirect('entity.hug.canonical', ['hug' => $entity->id()]);
+    }
   }
 
 }
