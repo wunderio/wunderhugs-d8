@@ -26,7 +26,7 @@ class UserHugStatusBlock extends BlockBase {
     $user = \Drupal::currentUser();
 
     // Fetch the dates for the current hug window.
-    $hug_window = checkHugWindow(time());
+    $hug_window = wunderhugs_check_hug_window(time());
 
     // Hide some info if user is not logged in.
     if (isset($user) && $user->id() > 0) {

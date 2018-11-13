@@ -16,7 +16,7 @@ class UserHugLimitConstraintValidator extends ConstraintValidator {
   public function validate($entity, Constraint $constraint) {
     if (isset($entity)) {
       // Check which window this applies to.
-      $window_dates = checkHugWindow($entity->get('created')->value);
+      $window_dates = wunderhugs_check_hug_window($entity->get('created')->value);
       // Check how many hugs this user has made in this window.
       $config = \Drupal::config('wunderhugs.adminsettings');
       $hug_limit = $config->get('maximum_hugs_per_window');
