@@ -32,7 +32,7 @@ function wunderhugs_help($route_name, RouteMatchInterface $route_match) {
  * @return array
  *   Contains the start and end dates of a hug window.
  */
-function checkHugWindow($date) {
+function wunderhugs_check_hug_window($date) {
   // Fetch the window settings from config.
   $config = \Drupal::config('wunderhugs.adminsettings');
   $window_range = $config->get('hug_window');
@@ -68,7 +68,7 @@ function checkHugWindow($date) {
  * @return int
  *   The number of hugs retrieved.
  */
-function fetchHugNo($uid = NULL, $start_date = NULL, $end_date = NULL) {
+function wunderhugs_fetch_hug_count($uid = NULL, $start_date = NULL, $end_date = NULL) {
   if (is_numeric($uid) && empty($start_date) && empty($end_date)) {
     $hugs = \Drupal::entityQuery('hug')
       ->condition('user_id', $uid)

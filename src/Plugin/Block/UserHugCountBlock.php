@@ -24,7 +24,7 @@ class UserHugCountBlock extends BlockBase {
     $user = \Drupal::currentUser();
 
     // Fetch the dates for the current hug window.
-    $hug_window = checkHugWindow(time());
+    $hug_window = wunderhugs_check_hug_window(time());
 
     // Fetch maximum allowed hugs.
     $config = \Drupal::config('wunderhugs.adminsettings');
@@ -34,7 +34,7 @@ class UserHugCountBlock extends BlockBase {
     if (isset($user) && $user->id() > 0) {
 
       // Fetch no of hugs in this window and work out remainder.
-      $hug_count = fetchHugNo($user->id(), $hug_window['start'], $hug_window['end']);
+      $hug_count = wunderhugs_fetch_hug_count($user->id(), $hug_window['start'], $hug_window['end']);
       $hugs_remaining = $max_hugs - $hug_count;
       $content .= \Drupal::translation()->formatPlural($hugs_remaining, '<span>1 hug left</span>', '<span>@count hugs left</span>');
     }
