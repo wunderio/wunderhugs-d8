@@ -68,7 +68,7 @@ function wunderhugs_check_hug_window($date) {
  * @return int
  *   The number of hugs retrieved.
  */
-function fetchHugNo($uid = NULL, $start_date = NULL, $end_date = NULL) {
+function wunderhugs_fetch_hug_count($uid = NULL, $start_date = NULL, $end_date = NULL) {
   if (is_numeric($uid) && empty($start_date) && empty($end_date)) {
     $hugs = \Drupal::entityQuery('hug')
       ->condition('user_id', $uid)

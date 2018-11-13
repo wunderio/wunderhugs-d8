@@ -35,13 +35,13 @@ class UserHugStatusBlock extends BlockBase {
       $content .= '<p>' . $link . '</p>';
 
       // Fetch information about this user's current hug window.
-      $hug_count = fetchHugNo($user->id(), $hug_window['start'], $hug_window['end']);
+      $hug_count = wunderhugs_fetch_hug_count($user->id(), $hug_window['start'], $hug_window['end']);
       $content .= \Drupal::translation()->formatPlural($hug_count, '<p>You have sent 1 hug in this window.</p>', '<p>You have sent @count hugs in this window.</p>');
     }
 
     // General hug window information.
     $content .= '<p>' . date('d M', $hug_window['start']) . ' to ' . date('d M', $hug_window['end']) . '</p>';
-    $content .= '<p>Total hugs this window: ' . fetchHugNo(NULL, $hug_window['start'], $hug_window['end']) . '</p>';
+    $content .= '<p>Total hugs this window: ' . wunderhugs_fetch_hug_count(NULL, $hug_window['start'], $hug_window['end']) . '</p>';
 
     // Fetch information about the previous window.
     $config = \Drupal::config('wunderhugs.adminsettings');
@@ -58,10 +58,10 @@ class UserHugStatusBlock extends BlockBase {
     }
     $content .= '<p>Prev window start: ' . date('d-m-Y', $prev_window_start) . '</p>';
     $content .= '<p>Prev window end: ' . date('d-m-Y', $prev_window_end) . '</p>';
-    $content .= '<p>Total hugs previous window: ' . fetchHugNo(NULL, $prev_window_start, $prev_window_end) . '</p>';
+    $content .= '<p>Total hugs previous window: ' . wunderhugs_fetch_hug_count(NULL, $prev_window_start, $prev_window_end) . '</p>';
 
     // Fetch information about all hugs.
-    $content .= '<p>Total hugs: ' . fetchHugNo() . '</p>';
+    $content .= '<p>Total hugs: ' . wunderhugs_fetch_hug_count() . '</p>';
 
     $build['user_hug_status_block']['#markup'] = $content;
     $build['#cache']['max-age'] = 0;

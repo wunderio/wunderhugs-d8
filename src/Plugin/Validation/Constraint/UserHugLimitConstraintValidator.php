@@ -20,7 +20,7 @@ class UserHugLimitConstraintValidator extends ConstraintValidator {
       // Check how many hugs this user has made in this window.
       $config = \Drupal::config('wunderhugs.adminsettings');
       $hug_limit = $config->get('maximum_hugs_per_window');
-      $user_hug_no = fetchHugNo($entity->getOwnerId(), $window_dates['start'], $window_dates['end']);
+      $user_hug_no = wunderhugs_fetch_hug_count($entity->getOwnerId(), $window_dates['start'], $window_dates['end']);
       // Run validation.
       if ($user_hug_no >= $hug_limit) {
         $this->context->addViolation($constraint->message, ['%value' => $hug_limit]);
